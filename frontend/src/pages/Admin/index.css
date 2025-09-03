@@ -1,0 +1,73 @@
+.admin-container {
+  min-height: 100vh;
+}
+
+.admin-header {
+  background: #001529;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.admin-title {
+  color: white;
+  margin: 0;
+}
+
+.admin-user-info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.admin-sider {
+  background: #fff;
+  border-right: 1px solid #f0f0f0;
+}
+
+.admin-content {
+  padding: 24px;
+  background: #f0f2f5;
+}
+
+.admin-tabs {
+  background: #fff;
+  padding: 24px;
+  border-radius: 8px;
+}
+
+.stats-card {
+  text-align: center;
+  padding: 24px;
+}
+
+.stats-number {
+  font-size: 24px;
+  font-weight: bold;
+  color: #1890ff;
+}
+
+.sessions-list {
+  margin-top: 16px;
+}
+
+.session-item {
+  margin-bottom: 8px;
+  padding: 16px;
+  border: 1px solid #d9d9d9;
+  border-radius: 6px;
+  background: #fff;
+}
+
+.session-item:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.session-actions {
+  margin-top: 8px;
+}
+
+.session-actions .ant-btn {
+  margin-right: 8px;
+}

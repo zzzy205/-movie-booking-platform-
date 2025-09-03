@@ -1,0 +1,120 @@
+.profile-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.profile-header {
+  background: #001529;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.profile-title {
+  color: white;
+  margin: 0;
+}
+
+.profile-user-info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.profile-content {
+  padding: 24px;
+  background: #f0f2f5;
+}
+
+.profile-card {
+  margin-bottom: 24px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.profile-info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.profile-avatar {
+  font-size: 48px;
+  color: #1890ff;
+}
+
+.profile-details h4 {
+  margin: 0 0 8px 0;
+}
+
+.profile-details .ant-typography {
+  margin-bottom: 4px;
+}
+
+.change-password-form {
+  max-width: 400px;
+}
+
+.change-password-form .ant-form-item {
+  margin-bottom: 16px;
+}
+
+.change-password-form .ant-btn {
+  height: 40px;
+  font-size: 16px;
+}
+
+.profile-actions {
+  margin-top: 16px;
+}
+
+.profile-actions .ant-btn {
+  margin-right: 8px;
+}
+
+.ant-tabs-tab {
+  font-size: 16px;
+  padding: 12px 24px;
+}
+
+.ant-tabs-content {
+  min-height: 400px;
+}
+
+.ant-card {
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.ant-list-item {
+  padding: 16px;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  border: 1px solid #f0f0f0;
+  transition: all 0.3s;
+}
+
+.ant-list-item:hover {
+  border-color: #1890ff;
+  box-shadow: 0 2px 8px rgba(24, 144, 255, 0.1);
+}
+
+.ant-form-item-label > label {
+  font-weight: 500;
+}
+
+.ant-input-password {
+  border-radius: 6px;
+}
+
+.ant-btn {
+  border-radius: 6px;
+  height: 40px;
+}
+
+.ant-tag {
+  border-radius: 4px;
+  font-weight: 500;
+}

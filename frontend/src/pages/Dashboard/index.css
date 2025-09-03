@@ -1,0 +1,123 @@
+.dashboard-container {
+  min-height: 100vh;
+}
+
+.dashboard-header {
+  background: #001529;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dashboard-title {
+  color: white;
+  margin: 0;
+}
+
+.dashboard-user-info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.dashboard-sider {
+  background: #fff;
+  border-right: 1px solid #f0f0f0;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.dashboard-content {
+  padding: 24px;
+  background: #f0f2f5;
+}
+
+.session-card {
+  margin-bottom: 12px;
+  cursor: pointer;
+  transition: all 0.3s;
+  position: relative;
+  border-radius: 8px;
+}
+
+.session-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.session-card.selected {
+  border: 2px solid #1890ff;
+  box-shadow: 0 4px 12px rgba(24, 144, 255, 0.25);
+  background: #f0f8ff;
+}
+
+.announcement-card {
+  margin-bottom: 16px;
+  background: #f6ffed;
+  border: 1px solid #b7eb8f;
+}
+
+.sessions-list {
+  height: calc(100vh - 200px);
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+/* 自定义滚动条样式 */
+.sessions-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sessions-list::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.sessions-list::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+.sessions-list::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* 左侧边栏容器 */
+.dashboard-sider .ant-layout-sider-children {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 电影场次标题 */
+.dashboard-sider .ant-typography {
+  flex-shrink: 0;
+}
+
+/* 电影场次列表容器 */
+.dashboard-sider .sessions-container {
+  flex: 1;
+  overflow-y: auto;
+  min-height: 0;
+  padding-right: 8px;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 100px 0;
+}
+
+.empty-state-icon {
+  font-size: 64px;
+  color: #d9d9d9;
+  margin-bottom: 16px;
+}
+
+.empty-state-title {
+  color: #666;
+}
+
+.empty-state-text {
+  color: #999;
+}
