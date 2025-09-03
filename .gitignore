@@ -85,3 +85,7 @@ DEPLOYMENT_SERVER.md
 # 备份文件
 *.backup
 *.bak
+*.tar
+*.tar.gz
+*.png
+test_image.png
