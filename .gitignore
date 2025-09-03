@@ -95,3 +95,9 @@ test_image.png
 *.tar.gz
 *.zip
 test_image.png
+
+# 备份文件和压缩包
+*.tar
+*.tar.gz
+*.zip
+test_image.png
