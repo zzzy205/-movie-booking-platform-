@@ -3,33 +3,29 @@ version: '3.8'
 services:
   # 前端服务
   frontend:
-    build:
-      context: ./frontend
-      dockerfile: ../docker/frontend/Dockerfile.prod
+    image: movie-booking-platform-frontend:v1
     ports:
-      - "3000:3000"
+      - "3001:3000"
     environment:
       - NODE_ENV=production
-      - REACT_APP_API_URL=${REACT_APP_API_URL:-http://localhost:8000}
-      - REACT_APP_WS_URL=${REACT_APP_WS_URL:-ws://localhost:8000}
+      - REACT_APP_API_URL=${REACT_APP_API_URL:-http://192.168.22.120:8001}
+      - REACT_APP_WS_URL=${REACT_APP_WS_URL:-ws://192.168.22.120:8001}
     networks:
       - movie-network
 
   # 后端服务
   backend:
-    build:
-      context: ./backend
-      dockerfile: ../docker/backend/Dockerfile.prod
+    image: movie-booking-platform-backend:v1
     ports:
-      - "8000:8000"
+      - "8001:8000"
     volumes:
       - ./data:/app/data
     environment:
       - NODE_ENV=production
       - PORT=8000
       - DB_PATH=/app/data/movie_booking.db
-      - JWT_SECRET=${JWT_SECRET}
-      - CORS_ORIGIN=${CORS_ORIGIN:-http://localhost:3000}
+      - JWT_SECRET=${JWT_SECRET:-your-production-secret-key-change-me}
+      - CORS_ORIGIN=${CORS_ORIGIN:-http://192.168.22.120:3001}
     networks:
       - movie-network
 
@@ -40,7 +36,7 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - ./nginx/conf/nginx.prod.conf:/etc/nginx/nginx.conf
+      - ./nginx/conf/nginx.conf:/etc/nginx/nginx.conf
       - ./nginx/conf/default.prod.conf:/etc/nginx/conf.d/default.conf
       - ./nginx/ssl:/etc/nginx/ssl
     networks:

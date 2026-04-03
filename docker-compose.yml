@@ -6,6 +6,7 @@ services:
     build:
       context: ./frontend
       dockerfile: ../docker/frontend/Dockerfile
+    image: movie-booking-platform-frontend:latest
     ports:
       - "3001:3000"
     volumes:
@@ -25,6 +26,7 @@ services:
     build:
       context: ./backend
       dockerfile: ../docker/backend/Dockerfile
+    image: movie-booking-platform-backend:latest
     ports:
       - "8001:8000"
     volumes:

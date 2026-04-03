@@ -8,23 +8,44 @@ echo "请确保已拔掉内网网线，准备插上外网网线"
 # 等待用户确认
 read -p "按回车键继续，或按Ctrl+C取消..."
 
-# 1. 备份当前内网配置
-if [ ! -f /etc/netplan/01-netcfg.yaml.backup ]; then
-    echo "备份当前内网配置..."
-    sudo cp /etc/netplan/01-netcfg.yaml /etc/netplan/01-netcfg.yaml.backup
-    echo "✅ 内网配置已备份到 /etc/netplan/01-netcfg.yaml.backup"
+# 1. 检测网络接口
+# 优先使用 enp2s0f0，如果不存在则尝试 enp2s0f1 或 eno1
+if ip link show enp2s0f0 > /dev/null 2>&1; then
+    INTERFACE="enp2s0f0"
+elif ip link show enp2s0f1 > /dev/null 2>&1; then
+    INTERFACE="enp2s0f1"
+elif ip link show eno1 > /dev/null 2>&1; then
+    INTERFACE="eno1"
 else
-    echo "⚠️  内网配置已存在备份，跳过备份步骤"
+    echo "❌ 未找到可用的网络接口"
+    echo "可用接口："
+    ip link show | grep -E "^[0-9]+:" | awk '{print $2}' | sed 's/://'
+    exit 1
 fi
 
-# 2. 应用外网配置
-echo "应用外网配置..."
-sudo tee /etc/netplan/01-netcfg.yaml > /dev/null << 'EOF'
+echo "✅ 检测到网络接口: $INTERFACE"
+
+# 2. 备份当前配置（如果存在）
+if [ -f /etc/netplan/01-netcfg.yaml ]; then
+    if [ ! -f /etc/netplan/01-netcfg.yaml.backup ]; then
+        echo "备份当前网络配置..."
+        sudo cp /etc/netplan/01-netcfg.yaml /etc/netplan/01-netcfg.yaml.backup
+        echo "✅ 配置已备份到 /etc/netplan/01-netcfg.yaml.backup"
+    else
+        echo "⚠️  配置已存在备份，跳过备份步骤"
+    fi
+else
+    echo "ℹ️  未找到现有配置文件，将创建新配置"
+fi
+
+# 3. 应用外网配置
+echo "应用外网配置到接口: $INTERFACE"
+sudo tee /etc/netplan/01-netcfg.yaml > /dev/null << EOF
 network:
   version: 2
   renderer: networkd
   ethernets:
-    eno1:
+    $INTERFACE:
       dhcp4: no
       addresses:
         - 192.168.22.120/24
